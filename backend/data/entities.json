@@ -1,0 +1,502 @@
+[
+  {
+    "entity_id": "ENT-0001",
+    "name": "James Johnson",
+    "type": "INDIVIDUAL",
+    "country": "RU",
+    "city": "Moscow",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2016-02-24"
+  },
+  {
+    "entity_id": "ENT-0002",
+    "name": "Mueller Relief Fund",
+    "type": "NGO",
+    "country": "RU",
+    "city": "St Petersburg",
+    "risk_flag": true,
+    "pep": true,
+    "registered_date": "2016-01-19"
+  },
+  {
+    "entity_id": "ENT-0003",
+    "name": "Kozlov Enterprises SA",
+    "type": "CORPORATION",
+    "country": "CH",
+    "city": "Zurich",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2023-01-11"
+  },
+  {
+    "entity_id": "ENT-0004",
+    "name": "Brown Foundation",
+    "type": "NGO",
+    "country": "RU",
+    "city": "St Petersburg",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-01-27"
+  },
+  {
+    "entity_id": "ENT-0005",
+    "name": "Brown Trading SA",
+    "type": "CORPORATION",
+    "country": "IR",
+    "city": "Tehran",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2018-10-10"
+  },
+  {
+    "entity_id": "ENT-0006",
+    "name": "Ivan Petrov",
+    "type": "INDIVIDUAL",
+    "country": "UK",
+    "city": "Manchester",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2021-10-08"
+  },
+  {
+    "entity_id": "ENT-0007",
+    "name": "Aisha Okafor",
+    "type": "INDIVIDUAL",
+    "country": "SG",
+    "city": "Singapore",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2019-03-31"
+  },
+  {
+    "entity_id": "ENT-0008",
+    "name": "Kim Relief Fund",
+    "type": "NGO",
+    "country": "UK",
+    "city": "Birmingham",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2019-01-21"
+  },
+  {
+    "entity_id": "ENT-0009",
+    "name": "Mueller Holdings SA",
+    "type": "CORPORATION",
+    "country": "BS",
+    "city": "Nassau",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-11-23"
+  },
+  {
+    "entity_id": "ENT-0010",
+    "name": "Petrov Capital SA",
+    "type": "CORPORATION",
+    "country": "CN",
+    "city": "Beijing",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2019-02-03"
+  },
+  {
+    "entity_id": "ENT-0011",
+    "name": "Apex Ventures SA",
+    "type": "SHELL_COMPANY",
+    "country": "DE",
+    "city": "Munich",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2022-04-08"
+  },
+  {
+    "entity_id": "ENT-0012",
+    "name": "Garcia Relief Fund",
+    "type": "NGO",
+    "country": "UK",
+    "city": "Birmingham",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2020-03-08"
+  },
+  {
+    "entity_id": "ENT-0013",
+    "name": "Horizon Ventures SA",
+    "type": "SHELL_COMPANY",
+    "country": "AE",
+    "city": "Dubai",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-05-12"
+  },
+  {
+    "entity_id": "ENT-0014",
+    "name": "Zenith Holdings LLC",
+    "type": "SHELL_COMPANY",
+    "country": "IR",
+    "city": "Tehran",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2021-05-12"
+  },
+  {
+    "entity_id": "ENT-0015",
+    "name": "Meridian Capital BV",
+    "type": "SHELL_COMPANY",
+    "country": "IN",
+    "city": "Bangalore",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2017-12-20"
+  },
+  {
+    "entity_id": "ENT-0016",
+    "name": "Fischer Enterprises GmbH",
+    "type": "CORPORATION",
+    "country": "DE",
+    "city": "Berlin",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2019-10-21"
+  },
+  {
+    "entity_id": "ENT-0017",
+    "name": "Chen Aid Society",
+    "type": "NGO",
+    "country": "IN",
+    "city": "Mumbai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2016-07-20"
+  },
+  {
+    "entity_id": "ENT-0018",
+    "name": "The Mueller Family Trust",
+    "type": "TRUST",
+    "country": "PA",
+    "city": "Panama City",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2016-09-18"
+  },
+  {
+    "entity_id": "ENT-0019",
+    "name": "Brown Enterprises SA",
+    "type": "CORPORATION",
+    "country": "RU",
+    "city": "Moscow",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2021-09-06"
+  },
+  {
+    "entity_id": "ENT-0020",
+    "name": "Johnson Relief Fund",
+    "type": "NGO",
+    "country": "KY",
+    "city": "George Town",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2016-04-14"
+  },
+  {
+    "entity_id": "ENT-0021",
+    "name": "Johnson Relief Fund",
+    "type": "NGO",
+    "country": "RU",
+    "city": "St Petersburg",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2019-11-16"
+  },
+  {
+    "entity_id": "ENT-0022",
+    "name": "The Smith Family Trust",
+    "type": "TRUST",
+    "country": "DE",
+    "city": "Munich",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2017-12-14"
+  },
+  {
+    "entity_id": "ENT-0023",
+    "name": "Kozlov Holdings SA",
+    "type": "CORPORATION",
+    "country": "PA",
+    "city": "Panama City",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2020-09-10"
+  },
+  {
+    "entity_id": "ENT-0024",
+    "name": "Al-Rashid Trading SA",
+    "type": "CORPORATION",
+    "country": "BS",
+    "city": "Nassau",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2020-12-12"
+  },
+  {
+    "entity_id": "ENT-0025",
+    "name": "Chen Ivanov",
+    "type": "INDIVIDUAL",
+    "country": "IN",
+    "city": "Delhi",
+    "risk_flag": false,
+    "pep": true,
+    "registered_date": "2019-01-26"
+  },
+  {
+    "entity_id": "ENT-0026",
+    "name": "Meridian Partners Ltd",
+    "type": "SHELL_COMPANY",
+    "country": "IN",
+    "city": "Bangalore",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-12-17"
+  },
+  {
+    "entity_id": "ENT-0027",
+    "name": "The Mueller Family Trust",
+    "type": "TRUST",
+    "country": "NG",
+    "city": "Lagos",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2020-04-30"
+  },
+  {
+    "entity_id": "ENT-0028",
+    "name": "Johnson Enterprises SA",
+    "type": "CORPORATION",
+    "country": "PA",
+    "city": "Panama City",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2021-01-17"
+  },
+  {
+    "entity_id": "ENT-0029",
+    "name": "Kim Capital SA",
+    "type": "CORPORATION",
+    "country": "IR",
+    "city": "Tehran",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2020-10-20"
+  },
+  {
+    "entity_id": "ENT-0030",
+    "name": "Hans Tanaka",
+    "type": "INDIVIDUAL",
+    "country": "KY",
+    "city": "George Town",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2021-08-06"
+  },
+  {
+    "entity_id": "ENT-0031",
+    "name": "Ali International SA",
+    "type": "CORPORATION",
+    "country": "PA",
+    "city": "Panama City",
+    "risk_flag": true,
+    "pep": true,
+    "registered_date": "2022-01-28"
+  },
+  {
+    "entity_id": "ENT-0032",
+    "name": "Mueller Holdings Inc",
+    "type": "CORPORATION",
+    "country": "US",
+    "city": "Los Angeles",
+    "risk_flag": false,
+    "pep": true,
+    "registered_date": "2017-09-01"
+  },
+  {
+    "entity_id": "ENT-0033",
+    "name": "The Sharma Family Trust",
+    "type": "TRUST",
+    "country": "SG",
+    "city": "Singapore",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2021-05-27"
+  },
+  {
+    "entity_id": "ENT-0034",
+    "name": "The Tanaka Family Trust",
+    "type": "TRUST",
+    "country": "BS",
+    "city": "Nassau",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2017-02-18"
+  },
+  {
+    "entity_id": "ENT-0035",
+    "name": "Svetlana Brown",
+    "type": "INDIVIDUAL",
+    "country": "UK",
+    "city": "Manchester",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2020-03-27"
+  },
+  {
+    "entity_id": "ENT-0036",
+    "name": "Svetlana Petrov",
+    "type": "INDIVIDUAL",
+    "country": "CN",
+    "city": "Shanghai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2018-10-21"
+  },
+  {
+    "entity_id": "ENT-0037",
+    "name": "Hans Sharma",
+    "type": "INDIVIDUAL",
+    "country": "IR",
+    "city": "Tehran",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2016-07-28"
+  },
+  {
+    "entity_id": "ENT-0038",
+    "name": "Johnson Capital SA",
+    "type": "CORPORATION",
+    "country": "AE",
+    "city": "Dubai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2015-11-05"
+  },
+  {
+    "entity_id": "ENT-0039",
+    "name": "Petrov Foundation",
+    "type": "NGO",
+    "country": "KY",
+    "city": "George Town",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2017-08-26"
+  },
+  {
+    "entity_id": "ENT-0040",
+    "name": "The Sato Family Trust",
+    "type": "TRUST",
+    "country": "DE",
+    "city": "Berlin",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2019-07-01"
+  },
+  {
+    "entity_id": "ENT-0041",
+    "name": "Carlos Chen",
+    "type": "INDIVIDUAL",
+    "country": "IN",
+    "city": "Mumbai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2017-12-22"
+  },
+  {
+    "entity_id": "ENT-0042",
+    "name": "The Kim Family Trust",
+    "type": "TRUST",
+    "country": "IN",
+    "city": "Delhi",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2023-03-12"
+  },
+  {
+    "entity_id": "ENT-0043",
+    "name": "Sato Foundation",
+    "type": "NGO",
+    "country": "IR",
+    "city": "Tehran",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-08-28"
+  },
+  {
+    "entity_id": "ENT-0044",
+    "name": "Wang Relief Fund",
+    "type": "NGO",
+    "country": "BS",
+    "city": "Nassau",
+    "risk_flag": true,
+    "pep": true,
+    "registered_date": "2021-07-20"
+  },
+  {
+    "entity_id": "ENT-0045",
+    "name": "Kozlov Foundation",
+    "type": "NGO",
+    "country": "KY",
+    "city": "George Town",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2015-11-25"
+  },
+  {
+    "entity_id": "ENT-0046",
+    "name": "Mueller Enterprises SA",
+    "type": "CORPORATION",
+    "country": "CN",
+    "city": "Shanghai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2017-08-21"
+  },
+  {
+    "entity_id": "ENT-0047",
+    "name": "Viktor Ali",
+    "type": "INDIVIDUAL",
+    "country": "AE",
+    "city": "Dubai",
+    "risk_flag": false,
+    "pep": false,
+    "registered_date": "2015-06-12"
+  },
+  {
+    "entity_id": "ENT-0048",
+    "name": "Ana Ali",
+    "type": "INDIVIDUAL",
+    "country": "BS",
+    "city": "Nassau",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2017-04-16"
+  },
+  {
+    "entity_id": "ENT-0049",
+    "name": "Meridian Holdings BV",
+    "type": "SHELL_COMPANY",
+    "country": "RU",
+    "city": "Moscow",
+    "risk_flag": true,
+    "pep": false,
+    "registered_date": "2018-05-13"
+  },
+  {
+    "entity_id": "ENT-0050",
+    "name": "Atlas Partners BV",
+    "type": "SHELL_COMPANY",
+    "country": "KY",
+    "city": "George Town",
+    "risk_flag": true,
+    "pep": true,
+    "registered_date": "2017-05-23"
+  }
+]

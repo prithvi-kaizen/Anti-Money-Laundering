@@ -1,0 +1,133 @@
+[
+  {
+    "sanction_id": "SDN-0001",
+    "name": "Li Ivanov",
+    "aliases": [
+      "Dmitri Sato",
+      "Kenji Okafor",
+      "Viktor Mueller"
+    ],
+    "country": "BS",
+    "type": "ENTITY",
+    "program": "UN-CONSOLIDATED",
+    "listed_date": "2020-03-14",
+    "reason": "Human rights abuse"
+  },
+  {
+    "sanction_id": "SDN-0002",
+    "name": "Lucia Garcia",
+    "aliases": [
+      "Petra Ivanov",
+      "Ana Park",
+      "Robert Chen"
+    ],
+    "country": "PA",
+    "type": "INDIVIDUAL",
+    "program": "OFAC-SDN",
+    "listed_date": "2016-10-25",
+    "reason": "Narcotics trafficking"
+  },
+  {
+    "sanction_id": "SDN-0003",
+    "name": "Sarah Ivanov",
+    "aliases": [
+      "John Johnson",
+      "Chen Chen",
+      "Fatima Okafor"
+    ],
+    "country": "PA",
+    "type": "ENTITY",
+    "program": "UK-SANCTIONS",
+    "listed_date": "2019-08-23",
+    "reason": "Terrorism financing"
+  },
+  {
+    "sanction_id": "SDN-0004",
+    "name": "Lucia Smith",
+    "aliases": [
+      "Aisha Tanaka"
+    ],
+    "country": "PA",
+    "type": "ENTITY",
+    "program": "OFAC-SDN",
+    "listed_date": "2017-05-12",
+    "reason": "Terrorism financing"
+  },
+  {
+    "sanction_id": "SDN-0005",
+    "name": "Wei Petrov",
+    "aliases": [
+      "Mei Sato"
+    ],
+    "country": "RU",
+    "type": "INDIVIDUAL",
+    "program": "OFAC-SDN",
+    "listed_date": "2023-08-24",
+    "reason": "WMD proliferation"
+  },
+  {
+    "sanction_id": "SDN-0006",
+    "name": "Kenji Mueller",
+    "aliases": [
+      "Fatima Park"
+    ],
+    "country": "NG",
+    "type": "INDIVIDUAL",
+    "program": "OFAC-SDN",
+    "listed_date": "2022-05-06",
+    "reason": "WMD proliferation"
+  },
+  {
+    "sanction_id": "SDN-0007",
+    "name": "Hans Tanaka",
+    "aliases": [
+      "John Okafor",
+      "Nikolai Al-Rashid",
+      "Olga Kozlov"
+    ],
+    "country": "BS",
+    "type": "INDIVIDUAL",
+    "program": "OFAC-SDN",
+    "listed_date": "2015-05-24",
+    "reason": "Human rights abuse"
+  },
+  {
+    "sanction_id": "SDN-0008",
+    "name": "Lucia Ivanov",
+    "aliases": [
+      "Mohammed Fischer",
+      "Mei Johnson"
+    ],
+    "country": "BS",
+    "type": "ENTITY",
+    "program": "EU-SANCTIONS",
+    "listed_date": "2022-10-28",
+    "reason": "Corruption"
+  },
+  {
+    "sanction_id": "SDN-0009",
+    "name": "Robert Park",
+    "aliases": [
+      "Nikolai Ali",
+      "Ana Kozlov"
+    ],
+    "country": "PA",
+    "type": "ENTITY",
+    "program": "UN-CONSOLIDATED",
+    "listed_date": "2020-05-26",
+    "reason": "Corruption"
+  },
+  {
+    "sanction_id": "SDN-0010",
+    "name": "Petra Mueller",
+    "aliases": [
+      "John Santos",
+      "Ana Johnson"
+    ],
+    "country": "PA",
+    "type": "INDIVIDUAL",
+    "program": "UN-CONSOLIDATED",
+    "listed_date": "2015-02-13",
+    "reason": "Money laundering"
+  }
+]

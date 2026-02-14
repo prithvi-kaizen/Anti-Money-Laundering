@@ -1,0 +1,1002 @@
+[
+  {
+    "account_id": "ACC-000001",
+    "entity_id": "ENT-0033",
+    "entity_name": "The Sharma Family Trust",
+    "account_type": "BUSINESS",
+    "currency": "EUR",
+    "country": "SG",
+    "opened_date": "2023-03-27",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000002",
+    "entity_id": "ENT-0005",
+    "entity_name": "Brown Trading SA",
+    "account_type": "SAVINGS",
+    "currency": "GBP",
+    "country": "IR",
+    "opened_date": "2019-08-07",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000003",
+    "entity_id": "ENT-0029",
+    "entity_name": "Kim Capital SA",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "IR",
+    "opened_date": "2019-09-12",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000004",
+    "entity_id": "ENT-0042",
+    "entity_name": "The Kim Family Trust",
+    "account_type": "INVESTMENT",
+    "currency": "USD",
+    "country": "IN",
+    "opened_date": "2021-09-29",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000005",
+    "entity_id": "ENT-0020",
+    "entity_name": "Johnson Relief Fund",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "KY",
+    "opened_date": "2019-06-26",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000006",
+    "entity_id": "ENT-0007",
+    "entity_name": "Aisha Okafor",
+    "account_type": "INVESTMENT",
+    "currency": "EUR",
+    "country": "SG",
+    "opened_date": "2019-07-12",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000007",
+    "entity_id": "ENT-0039",
+    "entity_name": "Petrov Foundation",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "KY",
+    "opened_date": "2019-12-04",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000008",
+    "entity_id": "ENT-0044",
+    "entity_name": "Wang Relief Fund",
+    "account_type": "BUSINESS",
+    "currency": "SGD",
+    "country": "BS",
+    "opened_date": "2020-09-27",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000009",
+    "entity_id": "ENT-0004",
+    "entity_name": "Brown Foundation",
+    "account_type": "CHECKING",
+    "currency": "HKD",
+    "country": "RU",
+    "opened_date": "2020-05-17",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000010",
+    "entity_id": "ENT-0003",
+    "entity_name": "Kozlov Enterprises SA",
+    "account_type": "CHECKING",
+    "currency": "GBP",
+    "country": "CH",
+    "opened_date": "2022-04-29",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000011",
+    "entity_id": "ENT-0041",
+    "entity_name": "Carlos Chen",
+    "account_type": "BUSINESS",
+    "currency": "EUR",
+    "country": "IN",
+    "opened_date": "2022-02-27",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000012",
+    "entity_id": "ENT-0036",
+    "entity_name": "Svetlana Petrov",
+    "account_type": "OFFSHORE",
+    "currency": "SGD",
+    "country": "CN",
+    "opened_date": "2018-01-20",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000013",
+    "entity_id": "ENT-0005",
+    "entity_name": "Brown Trading SA",
+    "account_type": "SAVINGS",
+    "currency": "SGD",
+    "country": "IR",
+    "opened_date": "2018-03-15",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000014",
+    "entity_id": "ENT-0038",
+    "entity_name": "Johnson Capital SA",
+    "account_type": "INVESTMENT",
+    "currency": "EUR",
+    "country": "AE",
+    "opened_date": "2020-05-30",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000015",
+    "entity_id": "ENT-0003",
+    "entity_name": "Kozlov Enterprises SA",
+    "account_type": "BUSINESS",
+    "currency": "GBP",
+    "country": "CH",
+    "opened_date": "2023-01-16",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000016",
+    "entity_id": "ENT-0023",
+    "entity_name": "Kozlov Holdings SA",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "PA",
+    "opened_date": "2019-05-27",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000017",
+    "entity_id": "ENT-0023",
+    "entity_name": "Kozlov Holdings SA",
+    "account_type": "INVESTMENT",
+    "currency": "CHF",
+    "country": "PA",
+    "opened_date": "2023-06-18",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000018",
+    "entity_id": "ENT-0048",
+    "entity_name": "Ana Ali",
+    "account_type": "SAVINGS",
+    "currency": "EUR",
+    "country": "BS",
+    "opened_date": "2022-11-06",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000019",
+    "entity_id": "ENT-0012",
+    "entity_name": "Garcia Relief Fund",
+    "account_type": "OFFSHORE",
+    "currency": "USD",
+    "country": "UK",
+    "opened_date": "2019-01-03",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000020",
+    "entity_id": "ENT-0027",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "SAVINGS",
+    "currency": "GBP",
+    "country": "NG",
+    "opened_date": "2018-11-23",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000021",
+    "entity_id": "ENT-0025",
+    "entity_name": "Chen Ivanov",
+    "account_type": "CHECKING",
+    "currency": "CHF",
+    "country": "IN",
+    "opened_date": "2019-04-01",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000022",
+    "entity_id": "ENT-0030",
+    "entity_name": "Hans Tanaka",
+    "account_type": "BUSINESS",
+    "currency": "GBP",
+    "country": "KY",
+    "opened_date": "2022-08-08",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000023",
+    "entity_id": "ENT-0015",
+    "entity_name": "Meridian Capital BV",
+    "account_type": "CHECKING",
+    "currency": "HKD",
+    "country": "IN",
+    "opened_date": "2019-01-31",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000024",
+    "entity_id": "ENT-0022",
+    "entity_name": "The Smith Family Trust",
+    "account_type": "BUSINESS",
+    "currency": "USD",
+    "country": "DE",
+    "opened_date": "2023-06-04",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000025",
+    "entity_id": "ENT-0023",
+    "entity_name": "Kozlov Holdings SA",
+    "account_type": "INVESTMENT",
+    "currency": "CHF",
+    "country": "PA",
+    "opened_date": "2021-10-23",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000026",
+    "entity_id": "ENT-0022",
+    "entity_name": "The Smith Family Trust",
+    "account_type": "CHECKING",
+    "currency": "USD",
+    "country": "DE",
+    "opened_date": "2022-12-02",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000027",
+    "entity_id": "ENT-0012",
+    "entity_name": "Garcia Relief Fund",
+    "account_type": "INVESTMENT",
+    "currency": "GBP",
+    "country": "UK",
+    "opened_date": "2018-03-20",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000028",
+    "entity_id": "ENT-0039",
+    "entity_name": "Petrov Foundation",
+    "account_type": "OFFSHORE",
+    "currency": "GBP",
+    "country": "KY",
+    "opened_date": "2022-02-01",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000029",
+    "entity_id": "ENT-0028",
+    "entity_name": "Johnson Enterprises SA",
+    "account_type": "INVESTMENT",
+    "currency": "SGD",
+    "country": "PA",
+    "opened_date": "2018-08-25",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000030",
+    "entity_id": "ENT-0037",
+    "entity_name": "Hans Sharma",
+    "account_type": "SAVINGS",
+    "currency": "GBP",
+    "country": "IR",
+    "opened_date": "2018-04-01",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000031",
+    "entity_id": "ENT-0001",
+    "entity_name": "James Johnson",
+    "account_type": "INVESTMENT",
+    "currency": "SGD",
+    "country": "RU",
+    "opened_date": "2021-11-07",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000032",
+    "entity_id": "ENT-0024",
+    "entity_name": "Al-Rashid Trading SA",
+    "account_type": "OFFSHORE",
+    "currency": "USD",
+    "country": "BS",
+    "opened_date": "2023-04-28",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000033",
+    "entity_id": "ENT-0040",
+    "entity_name": "The Sato Family Trust",
+    "account_type": "BUSINESS",
+    "currency": "HKD",
+    "country": "DE",
+    "opened_date": "2022-10-03",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000034",
+    "entity_id": "ENT-0047",
+    "entity_name": "Viktor Ali",
+    "account_type": "BUSINESS",
+    "currency": "SGD",
+    "country": "AE",
+    "opened_date": "2019-09-26",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000035",
+    "entity_id": "ENT-0021",
+    "entity_name": "Johnson Relief Fund",
+    "account_type": "OFFSHORE",
+    "currency": "HKD",
+    "country": "RU",
+    "opened_date": "2019-08-29",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000036",
+    "entity_id": "ENT-0009",
+    "entity_name": "Mueller Holdings SA",
+    "account_type": "SAVINGS",
+    "currency": "CHF",
+    "country": "BS",
+    "opened_date": "2021-09-23",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000037",
+    "entity_id": "ENT-0044",
+    "entity_name": "Wang Relief Fund",
+    "account_type": "SAVINGS",
+    "currency": "SGD",
+    "country": "BS",
+    "opened_date": "2021-03-11",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000038",
+    "entity_id": "ENT-0026",
+    "entity_name": "Meridian Partners Ltd",
+    "account_type": "INVESTMENT",
+    "currency": "USD",
+    "country": "IN",
+    "opened_date": "2019-09-15",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000039",
+    "entity_id": "ENT-0014",
+    "entity_name": "Zenith Holdings LLC",
+    "account_type": "OFFSHORE",
+    "currency": "SGD",
+    "country": "IR",
+    "opened_date": "2021-05-27",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000040",
+    "entity_id": "ENT-0030",
+    "entity_name": "Hans Tanaka",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "KY",
+    "opened_date": "2021-10-15",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000041",
+    "entity_id": "ENT-0033",
+    "entity_name": "The Sharma Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "HKD",
+    "country": "SG",
+    "opened_date": "2018-12-14",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000042",
+    "entity_id": "ENT-0019",
+    "entity_name": "Brown Enterprises SA",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "RU",
+    "opened_date": "2021-07-20",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000043",
+    "entity_id": "ENT-0022",
+    "entity_name": "The Smith Family Trust",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "DE",
+    "opened_date": "2021-10-09",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000044",
+    "entity_id": "ENT-0015",
+    "entity_name": "Meridian Capital BV",
+    "account_type": "SAVINGS",
+    "currency": "EUR",
+    "country": "IN",
+    "opened_date": "2018-02-20",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000045",
+    "entity_id": "ENT-0016",
+    "entity_name": "Fischer Enterprises GmbH",
+    "account_type": "OFFSHORE",
+    "currency": "SGD",
+    "country": "DE",
+    "opened_date": "2022-10-07",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000046",
+    "entity_id": "ENT-0030",
+    "entity_name": "Hans Tanaka",
+    "account_type": "OFFSHORE",
+    "currency": "HKD",
+    "country": "KY",
+    "opened_date": "2021-03-24",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000047",
+    "entity_id": "ENT-0046",
+    "entity_name": "Mueller Enterprises SA",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "CN",
+    "opened_date": "2020-03-29",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000048",
+    "entity_id": "ENT-0010",
+    "entity_name": "Petrov Capital SA",
+    "account_type": "CHECKING",
+    "currency": "USD",
+    "country": "CN",
+    "opened_date": "2022-05-14",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000049",
+    "entity_id": "ENT-0015",
+    "entity_name": "Meridian Capital BV",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "IN",
+    "opened_date": "2020-11-26",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000050",
+    "entity_id": "ENT-0004",
+    "entity_name": "Brown Foundation",
+    "account_type": "INVESTMENT",
+    "currency": "EUR",
+    "country": "RU",
+    "opened_date": "2023-02-22",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000051",
+    "entity_id": "ENT-0030",
+    "entity_name": "Hans Tanaka",
+    "account_type": "SAVINGS",
+    "currency": "CHF",
+    "country": "KY",
+    "opened_date": "2021-09-29",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000052",
+    "entity_id": "ENT-0036",
+    "entity_name": "Svetlana Petrov",
+    "account_type": "INVESTMENT",
+    "currency": "GBP",
+    "country": "CN",
+    "opened_date": "2023-04-30",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000053",
+    "entity_id": "ENT-0040",
+    "entity_name": "The Sato Family Trust",
+    "account_type": "INVESTMENT",
+    "currency": "CHF",
+    "country": "DE",
+    "opened_date": "2022-08-29",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000054",
+    "entity_id": "ENT-0029",
+    "entity_name": "Kim Capital SA",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "IR",
+    "opened_date": "2022-10-31",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000055",
+    "entity_id": "ENT-0029",
+    "entity_name": "Kim Capital SA",
+    "account_type": "BUSINESS",
+    "currency": "EUR",
+    "country": "IR",
+    "opened_date": "2022-09-17",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000056",
+    "entity_id": "ENT-0050",
+    "entity_name": "Atlas Partners BV",
+    "account_type": "INVESTMENT",
+    "currency": "CHF",
+    "country": "KY",
+    "opened_date": "2021-07-07",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000057",
+    "entity_id": "ENT-0018",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "USD",
+    "country": "PA",
+    "opened_date": "2022-01-01",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000058",
+    "entity_id": "ENT-0016",
+    "entity_name": "Fischer Enterprises GmbH",
+    "account_type": "BUSINESS",
+    "currency": "GBP",
+    "country": "DE",
+    "opened_date": "2019-10-17",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000059",
+    "entity_id": "ENT-0006",
+    "entity_name": "Ivan Petrov",
+    "account_type": "SAVINGS",
+    "currency": "EUR",
+    "country": "UK",
+    "opened_date": "2019-04-19",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000060",
+    "entity_id": "ENT-0045",
+    "entity_name": "Kozlov Foundation",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "KY",
+    "opened_date": "2019-03-15",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000061",
+    "entity_id": "ENT-0027",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "GBP",
+    "country": "NG",
+    "opened_date": "2021-01-16",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000062",
+    "entity_id": "ENT-0027",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "NG",
+    "opened_date": "2022-09-02",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000063",
+    "entity_id": "ENT-0025",
+    "entity_name": "Chen Ivanov",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "IN",
+    "opened_date": "2018-02-10",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000064",
+    "entity_id": "ENT-0025",
+    "entity_name": "Chen Ivanov",
+    "account_type": "OFFSHORE",
+    "currency": "USD",
+    "country": "IN",
+    "opened_date": "2023-04-15",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000065",
+    "entity_id": "ENT-0020",
+    "entity_name": "Johnson Relief Fund",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "KY",
+    "opened_date": "2021-01-07",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000066",
+    "entity_id": "ENT-0039",
+    "entity_name": "Petrov Foundation",
+    "account_type": "SAVINGS",
+    "currency": "CHF",
+    "country": "KY",
+    "opened_date": "2019-03-26",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000067",
+    "entity_id": "ENT-0028",
+    "entity_name": "Johnson Enterprises SA",
+    "account_type": "OFFSHORE",
+    "currency": "USD",
+    "country": "PA",
+    "opened_date": "2020-03-07",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000068",
+    "entity_id": "ENT-0043",
+    "entity_name": "Sato Foundation",
+    "account_type": "OFFSHORE",
+    "currency": "HKD",
+    "country": "IR",
+    "opened_date": "2018-12-05",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000069",
+    "entity_id": "ENT-0009",
+    "entity_name": "Mueller Holdings SA",
+    "account_type": "INVESTMENT",
+    "currency": "SGD",
+    "country": "BS",
+    "opened_date": "2018-02-25",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000070",
+    "entity_id": "ENT-0038",
+    "entity_name": "Johnson Capital SA",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "AE",
+    "opened_date": "2018-02-25",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000071",
+    "entity_id": "ENT-0042",
+    "entity_name": "The Kim Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "EUR",
+    "country": "IN",
+    "opened_date": "2022-11-11",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000072",
+    "entity_id": "ENT-0012",
+    "entity_name": "Garcia Relief Fund",
+    "account_type": "CHECKING",
+    "currency": "GBP",
+    "country": "UK",
+    "opened_date": "2020-02-16",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000073",
+    "entity_id": "ENT-0014",
+    "entity_name": "Zenith Holdings LLC",
+    "account_type": "OFFSHORE",
+    "currency": "GBP",
+    "country": "IR",
+    "opened_date": "2019-11-23",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000074",
+    "entity_id": "ENT-0018",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "GBP",
+    "country": "PA",
+    "opened_date": "2022-09-06",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000075",
+    "entity_id": "ENT-0031",
+    "entity_name": "Ali International SA",
+    "account_type": "CHECKING",
+    "currency": "HKD",
+    "country": "PA",
+    "opened_date": "2021-01-09",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000076",
+    "entity_id": "ENT-0023",
+    "entity_name": "Kozlov Holdings SA",
+    "account_type": "SAVINGS",
+    "currency": "HKD",
+    "country": "PA",
+    "opened_date": "2018-05-21",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000077",
+    "entity_id": "ENT-0049",
+    "entity_name": "Meridian Holdings BV",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "RU",
+    "opened_date": "2019-02-13",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000078",
+    "entity_id": "ENT-0040",
+    "entity_name": "The Sato Family Trust",
+    "account_type": "SAVINGS",
+    "currency": "EUR",
+    "country": "DE",
+    "opened_date": "2018-09-16",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000079",
+    "entity_id": "ENT-0043",
+    "entity_name": "Sato Foundation",
+    "account_type": "CHECKING",
+    "currency": "SGD",
+    "country": "IR",
+    "opened_date": "2023-04-26",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000080",
+    "entity_id": "ENT-0030",
+    "entity_name": "Hans Tanaka",
+    "account_type": "BUSINESS",
+    "currency": "GBP",
+    "country": "KY",
+    "opened_date": "2018-12-10",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000081",
+    "entity_id": "ENT-0039",
+    "entity_name": "Petrov Foundation",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "KY",
+    "opened_date": "2023-05-30",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000082",
+    "entity_id": "ENT-0007",
+    "entity_name": "Aisha Okafor",
+    "account_type": "INVESTMENT",
+    "currency": "USD",
+    "country": "SG",
+    "opened_date": "2023-03-18",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000083",
+    "entity_id": "ENT-0037",
+    "entity_name": "Hans Sharma",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "IR",
+    "opened_date": "2023-04-13",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000084",
+    "entity_id": "ENT-0005",
+    "entity_name": "Brown Trading SA",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "IR",
+    "opened_date": "2022-08-29",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000085",
+    "entity_id": "ENT-0007",
+    "entity_name": "Aisha Okafor",
+    "account_type": "BUSINESS",
+    "currency": "HKD",
+    "country": "SG",
+    "opened_date": "2021-05-14",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000086",
+    "entity_id": "ENT-0037",
+    "entity_name": "Hans Sharma",
+    "account_type": "CHECKING",
+    "currency": "GBP",
+    "country": "IR",
+    "opened_date": "2020-12-27",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000087",
+    "entity_id": "ENT-0043",
+    "entity_name": "Sato Foundation",
+    "account_type": "BUSINESS",
+    "currency": "USD",
+    "country": "IR",
+    "opened_date": "2020-11-02",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000088",
+    "entity_id": "ENT-0001",
+    "entity_name": "James Johnson",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "RU",
+    "opened_date": "2018-08-05",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000089",
+    "entity_id": "ENT-0024",
+    "entity_name": "Al-Rashid Trading SA",
+    "account_type": "OFFSHORE",
+    "currency": "HKD",
+    "country": "BS",
+    "opened_date": "2018-11-10",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000090",
+    "entity_id": "ENT-0012",
+    "entity_name": "Garcia Relief Fund",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "UK",
+    "opened_date": "2019-07-08",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000091",
+    "entity_id": "ENT-0035",
+    "entity_name": "Svetlana Brown",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "UK",
+    "opened_date": "2020-06-11",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000092",
+    "entity_id": "ENT-0018",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "BUSINESS",
+    "currency": "EUR",
+    "country": "PA",
+    "opened_date": "2022-08-29",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000093",
+    "entity_id": "ENT-0018",
+    "entity_name": "The Mueller Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "EUR",
+    "country": "PA",
+    "opened_date": "2022-03-17",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000094",
+    "entity_id": "ENT-0037",
+    "entity_name": "Hans Sharma",
+    "account_type": "INVESTMENT",
+    "currency": "HKD",
+    "country": "IR",
+    "opened_date": "2020-02-16",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000095",
+    "entity_id": "ENT-0002",
+    "entity_name": "Mueller Relief Fund",
+    "account_type": "OFFSHORE",
+    "currency": "GBP",
+    "country": "RU",
+    "opened_date": "2019-01-08",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000096",
+    "entity_id": "ENT-0014",
+    "entity_name": "Zenith Holdings LLC",
+    "account_type": "BUSINESS",
+    "currency": "GBP",
+    "country": "IR",
+    "opened_date": "2019-11-29",
+    "status": "ACTIVE"
+  },
+  {
+    "account_id": "ACC-000097",
+    "entity_id": "ENT-0039",
+    "entity_name": "Petrov Foundation",
+    "account_type": "BUSINESS",
+    "currency": "SGD",
+    "country": "KY",
+    "opened_date": "2018-01-21",
+    "status": "FROZEN"
+  },
+  {
+    "account_id": "ACC-000098",
+    "entity_id": "ENT-0013",
+    "entity_name": "Horizon Ventures SA",
+    "account_type": "CHECKING",
+    "currency": "EUR",
+    "country": "AE",
+    "opened_date": "2022-01-14",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000099",
+    "entity_id": "ENT-0032",
+    "entity_name": "Mueller Holdings Inc",
+    "account_type": "INVESTMENT",
+    "currency": "EUR",
+    "country": "US",
+    "opened_date": "2021-11-15",
+    "status": "DORMANT"
+  },
+  {
+    "account_id": "ACC-000100",
+    "entity_id": "ENT-0042",
+    "entity_name": "The Kim Family Trust",
+    "account_type": "OFFSHORE",
+    "currency": "CHF",
+    "country": "IN",
+    "opened_date": "2022-06-12",
+    "status": "ACTIVE"
+  }
+]
