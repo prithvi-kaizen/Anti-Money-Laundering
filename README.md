@@ -1,6 +1,8 @@
-# AML Investigator Agent
+# Sentinel — AML Investigator Agent
 
-A GenAI-powered Anti-Money Laundering investigator that automates alert triage, entity graph construction, risk analysis, and Suspicious Activity Report (SAR) generation 
+A full-stack Anti-Money Laundering co-investigator that automates alert triage, entity graph construction, risk analysis, and Suspicious Activity Report (SAR) generation — **100% local, zero cost, no external APIs**.
+
+> **[Live Demo →  sentinel-aml-two.vercel.app](https://sentinel-aml-two.vercel.app)**
 
 ![Dashboard](./assets/dashboard-preview.png)
 
