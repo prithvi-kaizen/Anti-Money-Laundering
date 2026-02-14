@@ -7,7 +7,7 @@ import SARPanel from "@/components/SARPanel";
 import AuditLog from "@/components/AuditLog";
 import TimingChart from "@/components/TimingChart";
 
-const API = "http://localhost:8000";
+const API = "/api";
 
 interface Alert {
   alert_id: string;

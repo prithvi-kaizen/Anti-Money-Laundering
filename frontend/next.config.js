@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async rewrites() {
-    // Only proxy API calls in development — Vercel handles routing in production
+    // In development, proxy /api/* to the local FastAPI backend
     if (process.env.NODE_ENV === 'development') {
       return [
         {
@@ -10,6 +10,7 @@ const nextConfig = {
         },
       ];
     }
+    // In production on Vercel, vercel.json handles API routing
     return [];
   },
 };
