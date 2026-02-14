@@ -26,7 +26,9 @@ def analyze_risk(alert_id: str) -> dict:
     all_entity_txs = get_transactions_for_entity(alert["entity_id"])
 
     drivers = []
-    total_score = 0
+    driver_boost = 0
+    alert_base_score = alert.get("risk_score", 50)
+    alert_base_level = alert.get("risk_level", "MEDIUM")
 
     # 1. Structuring detection
     structuring_txs = [t for t in all_entity_txs
@@ -34,7 +36,7 @@ def analyze_risk(alert_id: str) -> dict:
                        or (t["amount"] >= 8000 and t["amount"] < STRUCTURING_THRESHOLD)]
     if structuring_txs:
         confidence = min(len(structuring_txs) * 0.2, 1.0)
-        total_score += 25
+        driver_boost += 5
         drivers.append({
             "indicator": "Structuring Pattern Detected",
             "severity": "HIGH",
@@ -52,7 +54,7 @@ def analyze_risk(alert_id: str) -> dict:
         sanctions_matches = check_sanctions(entity["name"], entity["country"])
     if sanctions_matches:
         confidence = 0.9
-        total_score += 30
+        driver_boost += 8
         drivers.append({
             "indicator": "Sanctions List Proximity",
             "severity": "CRITICAL",
@@ -69,7 +71,7 @@ def analyze_risk(alert_id: str) -> dict:
               or t.get("receiver_country") in HIGH_RISK_COUNTRIES]
     if hr_txs:
         confidence = min(len(hr_txs) * 0.15, 0.95)
-        total_score += 15
+        driver_boost += 3
         countries = set()
         for t in hr_txs:
             if t.get("sender_country") in HIGH_RISK_COUNTRIES:
@@ -90,7 +92,7 @@ def analyze_risk(alert_id: str) -> dict:
     if rapid_txs:
         total_amount = sum(t["amount"] for t in rapid_txs)
         confidence = min(0.6 + len(rapid_txs) * 0.1, 0.95)
-        total_score += 15
+        driver_boost += 4
         drivers.append({
             "indicator": "Rapid Fund Movement",
             "severity": "HIGH",
@@ -104,7 +106,7 @@ def analyze_risk(alert_id: str) -> dict:
     roundtrip_txs = [t for t in all_entity_txs if t.get("suspicious_pattern") == "round_trip"]
     if roundtrip_txs:
         total_amount = sum(t["amount"] for t in roundtrip_txs)
-        total_score += 20
+        driver_boost += 6
         drivers.append({
             "indicator": "Round-Trip Transaction Pattern",
             "severity": "CRITICAL",
@@ -116,7 +118,7 @@ def analyze_risk(alert_id: str) -> dict:
 
     # 6. Shell company involvement
     if entity and entity.get("type") == "SHELL_COMPANY":
-        total_score += 10
+        driver_boost += 3
         drivers.append({
             "indicator": "Shell Company Involvement",
             "severity": "MEDIUM",
@@ -128,7 +130,7 @@ def analyze_risk(alert_id: str) -> dict:
 
     # 7. High transaction volume
     if len(all_entity_txs) > 20:
-        total_score += 5
+        driver_boost += 2
         total_amount = sum(t["amount"] for t in all_entity_txs)
         drivers.append({
             "indicator": "Unusually High Transaction Volume",
@@ -139,19 +141,25 @@ def analyze_risk(alert_id: str) -> dict:
                            f"${total_amount:,.2f}. Above normal activity threshold.",
         })
 
-    # Normalize score
-    risk_score = min(total_score, 100)
-    if risk_score == 0:
-        risk_score = alert.get("risk_score", 50)
+    # Final score: alert baseline + small boost from detected patterns (never downgrade)
+    risk_score = min(alert_base_score + driver_boost, 100)
 
+    # Preserve the alert's risk level — investigation should confirm or escalate, never downgrade
+    LEVEL_ORDER = {"CRITICAL": 4, "HIGH": 3, "MEDIUM": 2, "LOW": 1}
     if risk_score >= 80:
-        risk_level = "CRITICAL"
+        computed_level = "CRITICAL"
     elif risk_score >= 60:
-        risk_level = "HIGH"
+        computed_level = "HIGH"
     elif risk_score >= 40:
-        risk_level = "MEDIUM"
+        computed_level = "MEDIUM"
     else:
-        risk_level = "LOW"
+        computed_level = "LOW"
+
+    # Use whichever is higher: computed level or original alert level
+    if LEVEL_ORDER.get(alert_base_level, 0) > LEVEL_ORDER.get(computed_level, 0):
+        risk_level = alert_base_level
+    else:
+        risk_level = computed_level
 
     overall_confidence = round(
         sum(d["confidence"] for d in drivers) / max(len(drivers), 1), 2
