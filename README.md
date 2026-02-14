@@ -1,6 +1,6 @@
 # Sentinel — AML Investigator Agent
 
-A GenAI-powered Anti-Money Laundering co-investigator that automates alert triage, entity graph construction, risk analysis, and Suspicious Activity Report (SAR) generation — **100% local, zero cost, no external APIs**.
+A GenAI-powered Anti-Money Laundering co-investigator that automates alert triage, entity graph construction, risk analysis, and Suspicious Activity Report (SAR) generation 
 
 ![Dashboard](./assets/dashboard-preview.png)
 
