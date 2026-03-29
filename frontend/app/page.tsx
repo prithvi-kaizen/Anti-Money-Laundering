@@ -19,7 +19,7 @@ export default function Dashboard() {
   const investigationResult = useRef<any>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/alerts')
+    fetch('/api/alerts')
       .then(r => r.json()).then(setAlerts).catch(console.error);
   }, []);
 
@@ -30,7 +30,7 @@ export default function Dashboard() {
     setFlags([]);
     setOverrides([]);
     investigationResult.current = null;
-    fetch(`http://localhost:8000/alerts/${alert.id}/graph`)
+    fetch(`/api/alerts/${alert.id}/graph`)
       .then(r => r.json()).then(setGraphData).catch(console.error);
   };
 
@@ -39,7 +39,7 @@ export default function Dashboard() {
     setIsTriaging(true);
     setTriageDone(false);
     try {
-      const res = await fetch(`http://localhost:8000/alerts/${selectedAlert.id}/investigate`, { method: 'POST' });
+      const res = await fetch(`/api/alerts/${selectedAlert.id}/investigate`, { method: 'POST' });
       const data = await res.json();
       setFlags(data.compliance_flags || []);
       setOverrides(data.guardrail_overrides || []);

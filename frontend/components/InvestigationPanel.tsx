@@ -60,7 +60,7 @@ export default function InvestigationPanel({ alertId, shouldStream, investigatio
 
     const controller = new AbortController();
 
-    fetch(`http://localhost:8000/alerts/${alertId}/investigate/stream`, {
+    fetch(`/api/alerts/${alertId}/investigate/stream`, {
       signal: controller.signal,
     }).then(async (res) => {
       const reader = res.body?.getReader();

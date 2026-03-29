@@ -7,7 +7,7 @@ export default function AuditTrail({ alertId, isTriageDone }: any) {
 
   useEffect(() => {
     if (!alertId || !isTriageDone) return;
-    fetch(`http://localhost:8000/alerts/${alertId}/audit`)
+    fetch(`/api/alerts/${alertId}/audit`)
       .then(r => r.json())
       .then(setLogs)
       .catch(console.error);

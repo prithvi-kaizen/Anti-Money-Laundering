@@ -6,7 +6,7 @@ export default function ImpactDashboard() {
   const [metrics, setMetrics] = useState<any>(null);
 
   useEffect(() => {
-    fetch('http://localhost:8000/metrics')
+    fetch('/api/metrics')
       .then(r => r.json()).then(setMetrics).catch(console.error);
   }, []);
 
