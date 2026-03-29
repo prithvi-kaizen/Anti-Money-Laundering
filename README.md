@@ -1,54 +1,62 @@
 # Sentinel v2 — AI-Powered AML Investigation Agent
 
-> ET Gen AI Hackathon 2026 | Problem Statement 5: Domain-Specialized AI Agents with Compliance Guardrails
+> **ET Gen AI Hackathon 2026** | Problem Statement 5: Domain-Specialized AI Agents with Compliance Guardrails
 
-## The Problem
-Financial institutions file 3.5 million SARs annually. Manual AML investigation takes 4+ hours per alert,
-costs $25,000–$50,000 per analyst per year, and has a 38% false positive rate that creates investigator fatigue.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fprithvi-kaizen%2FAnti-Money-Laundering)
 
-## The Solution
-Sentinel combines rule-based compliance guardrails (FATF, FinCEN, OFAC) with Claude-powered 
-AI reasoning to investigate alerts in under 15 minutes with auditable, regulation-cited decisions.
+## 📋 Hackathon Submission Requirements
 
-## Architecture
-- **Backend**: FastAPI, SQLite, NetworkX, Anthropic SDK
-- **Frontend**: Next.js 14, Tailwind CSS, D3.js, Recharts
-- **Data**: Synthetic financial crime scenarios with embedded OFAC constraints and FATF jurisdictions.
+This repository contains all required assets for Problem Statement 5:
+- **✔️ Source Code & Setup Instructions**: Full Next.js / FastAPI codebase included below.
+- **✔️ 3-Minute Pitch Video**: See the suggested script and recording guide in [PITCH_SCRIPT.md](./PITCH_SCRIPT.md).
+- **✔️ Architecture Document**: System diagrams, agent roles, and error-handling logic are detailed in [ARCHITECTURE.md](./ARCHITECTURE.md).
+- **✔️ Impact Model**: Quantified business impact (OpEx math, throughput gains) is documented in [IMPACT_MODEL.md](./IMPACT_MODEL.md).
 
-## Key Innovation: The Guardrail Layer
-Unlike pure AI systems, Sentinel enforces hard regulatory boundaries that override AI outputs.
-If Claude assesses an alert as low-risk but the compliance engine detects FATF jurisdiction exposure,
-the system mandates escalation per FATF Recommendation 10. Every override is logged and persisted via a tamper-evident audit trail architecture.
+---
 
-## Impact Model
-| Metric | Manual | Sentinel | Improvement |
-|--------|--------|----------|-------------|
-| Investigation time | 4.2 hrs | 11 min | 95% reduction |
-| False positive rate | 38% | 12% | 68% reduction |
-| Daily throughput (per analyst) | 8 alerts | 140 alerts | 17.5x |
-| Annual cost (10-analyst team) | $3.2M | $1.1M | $2.1M saved |
+## 🚀 The Problem & Solution
+**The Problem**: Manual AML investigation takes 4+ hours per alert, costs $25,000–$50,000 per analyst per year, and has a 38% false positive rate that creates severe investigator fatigue.
 
-Assumptions: $75K blended analyst cost, 250 working days, 15 min Sentinel investigation time verified in demo.
+**The Solution**: Sentinel combines rule-based compliance guardrails (FATF, FinCEN, OFAC) with Groq-powered AI reasoning (Llama 3.3) to investigate alerts in under 15 minutes with auditable, regulation-cited decisions.
 
-## Setup Instructions
+## 🧠 Key Innovation: The Guardrail Layer
+Unlike pure generative AI systems, Sentinel enforces hard regulatory boundaries that act as an interception middleware. 
+If the AI assesses an alert as low-risk but the compliance engine detects FATF jurisdiction exposure, the system overrides the AI and mandates escalation. Every decision is logged and persisted via a tamper-evident SHA-256 audit trail architecture.
 
-### Backend (FastAPI Core)
+## 🛠️ Tech Stack
+- **Frontend**: Next.js 14, Tailwind CSS, D3.js (Force-directed entity graphs).
+- **Backend / Agent**: FastAPI, SQLite, NetworkX, Groq SDK (`llama-3.3-70b-versatile`).
+- **Data**: Synthetic financial crime dataset designed to test OFAC and FATF constraints.
+
+---
+
+## 💻 Local Setup Instructions
+
+### 1. Backend (FastAPI Core)
 ```bash
-export GROQ_API_KEY="your_groq_api_key_here"   # free at console.groq.com
+# Set your Groq API key (get it free at console.groq.com)
+export GROQ_API_KEY="your_actual_key_here"
+
+# Initialize python environment
 cd backend
 python -m venv venv
 source venv/bin/activate
+
+# Install dependencies and generate synthetic data
 pip install -r requirements.txt
 python scripts/generate_dataset.py
+
+# Start the Python server
 uvicorn main:app --reload --port 8000
 ```
-*Model used: `llama-3.3-70b-versatile` via Groq's free API. If `GROQ_API_KEY` is not set, a mock fallback is used automatically for demo resilience.*
+*(Note: If `GROQ_API_KEY` is not set, a mock fallback engine is used automatically for demo resilience.)*
 
-### Frontend (Next.js Dashboard)
+### 2. Frontend (Next.js Dashboard)
+Open a new terminal window:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Navigate to `http://localhost:3000` to access the Sentinel v2 Financial Operations Terminal.
+Navigate to [http://localhost:3000](http://localhost:3000) to access the Sentinel v2 Financial Operations Terminal.
