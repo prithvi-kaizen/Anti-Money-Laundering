@@ -1,19 +1,17 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Sentinel — AML Investigator",
-  description: "GenAI-powered AML co-investigator for compliance teams",
+  title: 'Sentinel v2 — AML Investigation Platform',
+  description: 'AI-Powered Anti-Money Laundering Investigation System',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" style={{ height: '100%' }}>
+      <body style={{ height: '100%', margin: 0, overflow: 'hidden' }}>
+        {children}
+      </body>
     </html>
   );
 }

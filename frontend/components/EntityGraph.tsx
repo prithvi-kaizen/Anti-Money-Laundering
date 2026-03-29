@@ -1,339 +1,288 @@
 "use client";
-
-import { useRef, useEffect, useCallback } from "react";
+import React, { useEffect, useRef, useState } from 'react';
+import * as d3 from 'd3';
+import { Share2, AlertTriangle } from 'lucide-react';
 
 interface GraphNode {
   id: string;
-  label: string;
-  type: string;
-  risk: boolean;
-  country: string;
-  metadata?: any;
+  name?: string;
+  type?: string;
+  risk_weight?: number;
+  is_sdn?: boolean;
+  is_shell_suspect?: boolean;
+  x?: number;
+  y?: number;
+  vx?: number;
+  vy?: number;
+  fx?: number | null;
+  fy?: number | null;
 }
 
-interface GraphEdge {
-  source: string;
-  target: string;
-  label: string;
+interface GraphLink {
+  source: string | GraphNode;
+  target: string | GraphNode;
   amount?: number;
-  tx_id?: string;
+  tx_type?: string;
 }
 
-interface GraphData {
-  nodes: GraphNode[];
-  edges: GraphEdge[];
-  alert_id: string;
-}
-
-interface SimNode extends GraphNode {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  radius: number;
-}
-
-interface Props {
-  graph: GraphData | null;
-  loading: boolean;
-}
-
-export default function EntityGraph({ graph, loading }: Props) {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animRef = useRef<number>(0);
-  const nodesRef = useRef<SimNode[]>([]);
-  const hoveredRef = useRef<SimNode | null>(null);
-  const mouseRef = useRef({ x: 0, y: 0 });
-
-  const draw = useCallback(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || !graph) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-    const W = rect.width;
-    const H = rect.height;
-
-    const nodes = nodesRef.current;
-    const edges = graph.edges;
-
-    // Physics simulation step
-    const k = 0.005; // spring constant
-    const repulsion = 3000;
-    const damping = 0.85;
-    const centerForce = 0.01;
-
-    // Repulsion between all nodes
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const dx = nodes[j].x - nodes[i].x;
-        const dy = nodes[j].y - nodes[i].y;
-        const dist = Math.max(Math.sqrt(dx * dx + dy * dy), 1);
-        const force = repulsion / (dist * dist);
-        const fx = (dx / dist) * force;
-        const fy = (dy / dist) * force;
-        nodes[i].vx -= fx;
-        nodes[i].vy -= fy;
-        nodes[j].vx += fx;
-        nodes[j].vy += fy;
-      }
-    }
-
-    // Spring forces along edges
-    const nodeMap = new Map(nodes.map((n) => [n.id, n]));
-    for (const edge of edges) {
-      const s = nodeMap.get(edge.source);
-      const t = nodeMap.get(edge.target);
-      if (!s || !t) continue;
-      const dx = t.x - s.x;
-      const dy = t.y - s.y;
-      const dist = Math.max(Math.sqrt(dx * dx + dy * dy), 1);
-      const force = k * (dist - 120);
-      const fx = (dx / dist) * force;
-      const fy = (dy / dist) * force;
-      s.vx += fx;
-      s.vy += fy;
-      t.vx -= fx;
-      t.vy -= fy;
-    }
-
-    // Center gravity + update positions
-    for (const node of nodes) {
-      node.vx += (W / 2 - node.x) * centerForce;
-      node.vy += (H / 2 - node.y) * centerForce;
-      node.vx *= damping;
-      node.vy *= damping;
-      node.x += node.vx;
-      node.y += node.vy;
-      node.x = Math.max(node.radius, Math.min(W - node.radius, node.x));
-      node.y = Math.max(node.radius, Math.min(H - node.radius, node.y));
-    }
-
-    // Clear
-    ctx.fillStyle = "#0e0e10";
-    ctx.fillRect(0, 0, W, H);
-
-    // Draw grid
-    ctx.strokeStyle = "rgba(39, 39, 42, 0.3)";
-    ctx.lineWidth = 0.5;
-    for (let x = 0; x < W; x += 40) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, H);
-      ctx.stroke();
-    }
-    for (let y = 0; y < H; y += 40) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(W, y);
-      ctx.stroke();
-    }
-
-    // Draw edges
-    for (const edge of edges) {
-      const s = nodeMap.get(edge.source);
-      const t = nodeMap.get(edge.target);
-      if (!s || !t) continue;
-
-      const isSuspicious = edge.label.includes("$") && parseFloat(edge.label.replace(/[$,]/g, "")) > 50000;
-
-      ctx.beginPath();
-      ctx.moveTo(s.x, s.y);
-      ctx.lineTo(t.x, t.y);
-      ctx.strokeStyle = isSuspicious
-        ? "rgba(229, 77, 77, 0.35)"
-        : "rgba(201, 168, 76, 0.15)";
-      ctx.lineWidth = isSuspicious ? 1.5 : 0.8;
-      ctx.stroke();
-
-      // Arrow
-      const angle = Math.atan2(t.y - s.y, t.x - s.x);
-      const midX = (s.x + t.x) / 2;
-      const midY = (s.y + t.y) / 2;
-      const arrowSize = 6;
-      ctx.beginPath();
-      ctx.moveTo(midX + arrowSize * Math.cos(angle), midY + arrowSize * Math.sin(angle));
-      ctx.lineTo(
-        midX - arrowSize * Math.cos(angle - Math.PI / 6),
-        midY - arrowSize * Math.sin(angle - Math.PI / 6)
-      );
-      ctx.lineTo(
-        midX - arrowSize * Math.cos(angle + Math.PI / 6),
-        midY - arrowSize * Math.sin(angle + Math.PI / 6)
-      );
-      ctx.closePath();
-      ctx.fillStyle = isSuspicious ? "rgba(229, 77, 77, 0.4)" : "rgba(201, 168, 76, 0.2)";
-      ctx.fill();
-
-      // Edge label
-      if (edge.label) {
-        ctx.font = "9px 'JetBrains Mono'";
-        ctx.fillStyle = "rgba(113, 113, 122, 0.6)";
-        ctx.textAlign = "center";
-        ctx.fillText(edge.label, midX, midY - 6);
-      }
-    }
-
-    // Draw nodes
-    for (const node of nodes) {
-      const isHovered = hoveredRef.current?.id === node.id;
-      const isPrimary = node.metadata?.is_primary;
-
-      // Glow effect for risk nodes
-      if (node.risk) {
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, node.radius * 3);
-        gradient.addColorStop(0, "rgba(229, 77, 77, 0.12)");
-        gradient.addColorStop(1, "rgba(229, 77, 77, 0)");
-        ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius * 3, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-      }
-
-      // Node circle
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, node.radius + (isHovered ? 2 : 0), 0, Math.PI * 2);
-
-      if (node.risk) {
-        ctx.fillStyle = isPrimary ? "#d43d3d" : "#e54d4d";
-      } else if (node.type === "account") {
-        ctx.fillStyle = "#737380";
-      } else {
-        ctx.fillStyle = isPrimary ? "#b89840" : "#c9a84c";
-      }
-      ctx.fill();
-
-      // Border
-      ctx.strokeStyle = isHovered ? "#e8e8ec" : isPrimary ? "rgba(201,168,76,0.5)" : "rgba(255,255,255,0.06)";
-      ctx.lineWidth = isPrimary ? 1.5 : 0.8;
-      ctx.stroke();
-
-      // Label
-      ctx.font = `${isHovered ? "bold " : ""}10px Inter`;
-      ctx.fillStyle = isHovered ? "#e8e8ec" : "#71717a";
-      ctx.textAlign = "center";
-      const labelStr = node.label.length > 18 ? node.label.substring(0, 16) + "…" : node.label;
-      ctx.fillText(labelStr, node.x, node.y + node.radius + 14);
-    }
-
-    // Tooltip for hovered node
-    if (hoveredRef.current) {
-      const node = hoveredRef.current;
-      const tooltipW = 180;
-      const tooltipH = 60;
-      let tx = node.x + 15;
-      let ty = node.y - tooltipH - 5;
-      if (tx + tooltipW > W) tx = node.x - tooltipW - 15;
-      if (ty < 0) ty = node.y + 20;
-
-      ctx.fillStyle = "rgba(17, 17, 19, 0.95)";
-      ctx.strokeStyle = "rgba(201, 168, 76, 0.2)";
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.roundRect(tx, ty, tooltipW, tooltipH, 6);
-      ctx.fill();
-      ctx.stroke();
-
-      ctx.font = "bold 11px Inter";
-      ctx.fillStyle = "#e8e8ec";
-      ctx.textAlign = "left";
-      ctx.fillText(node.label, tx + 10, ty + 18);
-
-      ctx.font = "10px Inter";
-      ctx.fillStyle = "#a1a1aa";
-      ctx.fillText(`Type: ${node.type} | ${node.country || "N/A"}`, tx + 10, ty + 34);
-      ctx.fillText(node.risk ? "High Risk" : "Normal", tx + 10, ty + 50);
-    }
-
-    animRef.current = requestAnimationFrame(draw);
-  }, [graph]);
+export default function EntityGraph({ graphData }: { graphData: any }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; node: GraphNode } | null>(null);
 
   useEffect(() => {
-    if (!graph || !graph.nodes.length) {
-      if (animRef.current) cancelAnimationFrame(animRef.current);
-      return;
-    }
+    if (!svgRef.current || !containerRef.current) return;
 
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const W = rect.width || 600;
-    const H = rect.height || 400;
+    const svg = d3.select(svgRef.current);
+    svg.selectAll('*').remove();
 
-    // Initialize simulation nodes
-    nodesRef.current = graph.nodes.map((n, i) => ({
-      ...n,
-      x: W / 2 + (Math.random() - 0.5) * 200,
-      y: H / 2 + (Math.random() - 0.5) * 200,
-      vx: 0,
-      vy: 0,
-      radius: n.type === "account" ? 8 : n.metadata?.is_primary ? 16 : 12,
+    const rawNodes: GraphNode[] = (graphData?.nodes ?? []).map((d: any) => ({ ...d }));
+    const rawLinks: GraphLink[] = (graphData?.links ?? []).map((d: any) => ({
+      source: typeof d.source === 'object' ? d.source.id : String(d.source),
+      target: typeof d.target === 'object' ? d.target.id : String(d.target),
+      amount: d.amount ?? 0,
+      tx_type: d.tx_type ?? 'wire',
     }));
 
-    hoveredRef.current = null;
-    animRef.current = requestAnimationFrame(draw);
+    if (rawNodes.length === 0) return;
 
-    return () => {
-      if (animRef.current) cancelAnimationFrame(animRef.current);
+    const { width, height } = containerRef.current.getBoundingClientRect();
+    const W = width || 700;
+    const H = height || 400;
+
+    svg.attr('viewBox', `0 0 ${W} ${H}`).attr('width', W).attr('height', H);
+
+    // ── DEFS ──
+    const defs = svg.append('defs');
+
+    // Glow filter
+    const glowFilter = defs.append('filter').attr('id', 'node-glow').attr('x', '-50%').attr('y', '-50%').attr('width', '200%').attr('height', '200%');
+    glowFilter.append('feGaussianBlur').attr('stdDeviation', '3').attr('result', 'blur');
+    const glowMerge = glowFilter.append('feMerge');
+    glowMerge.append('feMergeNode').attr('in', 'blur');
+    glowMerge.append('feMergeNode').attr('in', 'SourceGraphic');
+
+    // Arrow marker
+    defs.append('marker')
+      .attr('id', 'arrowhead')
+      .attr('viewBox', '-0 -5 10 10')
+      .attr('refX', 26)
+      .attr('refY', 0)
+      .attr('orient', 'auto')
+      .attr('markerWidth', 5)
+      .attr('markerHeight', 5)
+      .append('path')
+      .attr('d', 'M 0,-5 L 10,0 L 0,5')
+      .attr('fill', '#334155');
+
+    // Link gradient
+    const linkGrad = defs.append('linearGradient')
+      .attr('id', 'link-grad')
+      .attr('gradientUnits', 'userSpaceOnUse');
+    linkGrad.append('stop').attr('offset', '0%').attr('stop-color', '#1e3a5f');
+    linkGrad.append('stop').attr('offset', '100%').attr('stop-color', '#2e90fa').attr('stop-opacity', 0.3);
+
+    // ── SIMULATION ──
+    const simulation = d3.forceSimulation<GraphNode>(rawNodes)
+      .force('link', d3.forceLink<GraphNode, GraphLink>(rawLinks)
+        .id((d) => d.id)
+        .distance(d => {
+          const link = d as any;
+          const amt = link.amount ?? 0;
+          return Math.max(80, 160 - Math.log(amt + 1) * 8);
+        })
+        .strength(0.5))
+      .force('charge', d3.forceManyBody().strength(-400))
+      .force('center', d3.forceCenter(W / 2, H / 2))
+      .force('collision', d3.forceCollide<GraphNode>().radius(d => (d.type === 'company' ? 28 : 22)))
+      .force('x', d3.forceX(W / 2).strength(0.05))
+      .force('y', d3.forceY(H / 2).strength(0.05));
+
+    // ── LINKS ──
+    const maxAmt = d3.max(rawLinks, (d: any) => d.amount as number) || 1;
+    const strokeScale = d3.scaleLog().domain([1, maxAmt + 1]).range([1, 5]).clamp(true);
+
+    const linkSel = svg.append('g').attr('class', 'links')
+      .selectAll('line')
+      .data(rawLinks)
+      .join('line')
+      .attr('stroke', '#1e3a5f')
+      .attr('stroke-width', (d: any) => strokeScale(d.amount + 1))
+      .attr('stroke-opacity', 0.7)
+      .attr('marker-end', 'url(#arrowhead)');
+
+    // Amount labels on links
+    const linkLabelSel = svg.append('g').attr('class', 'link-labels')
+      .selectAll('text')
+      .data(rawLinks)
+      .join('text')
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '8')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('fill', '#334155')
+      .text((d: any) => d.amount > 0 ? `$${(d.amount / 1000).toFixed(0)}k` : '');
+
+    // ── NODES ──
+    const nodeSel = svg.append('g').attr('class', 'nodes')
+      .selectAll<SVGGElement, GraphNode>('g')
+      .data(rawNodes)
+      .join('g')
+      .attr('cursor', 'pointer')
+      .call(
+        d3.drag<SVGGElement, GraphNode>()
+          .on('start', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x; d.fy = d.y;
+          })
+          .on('drag', (event, d) => { d.fx = event.x; d.fy = event.y; })
+          .on('end', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null; d.fy = null;
+          })
+      )
+      .on('mouseenter', (event, d) => {
+        const rect = containerRef.current!.getBoundingClientRect();
+        setTooltip({ x: event.clientX - rect.left + 12, y: event.clientY - rect.top - 10, node: d });
+      })
+      .on('mouseleave', () => setTooltip(null));
+
+    // Node circles
+    const getNodeColor = (d: GraphNode) => {
+      if (d.is_sdn) return '#f04438';
+      if (d.type === 'company') return '#1e3a5f';
+      if (d.risk_weight! > 0) return '#431407';
+      return '#0f1e36';
     };
-  }, [graph, draw]);
 
-  // Mouse move handler for hover detection
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      const mx = e.clientX - rect.left;
-      const my = e.clientY - rect.top;
-      mouseRef.current = { x: mx, y: my };
-
-      let found: SimNode | null = null;
-      for (const node of nodesRef.current) {
-        const dx = mx - node.x;
-        const dy = my - node.y;
-        if (Math.sqrt(dx * dx + dy * dy) < node.radius + 5) {
-          found = node;
-          break;
-        }
-      }
-      hoveredRef.current = found;
-      canvas.style.cursor = found ? "pointer" : "default";
+    const getNodeStroke = (d: GraphNode) => {
+      if (d.is_sdn) return '#f04438';
+      if (d.is_shell_suspect) return '#f79009';
+      if (d.risk_weight! > 0) return '#f79009';
+      if (d.type === 'company') return '#2e90fa';
+      return '#1e3a5f';
     };
 
-    canvas.addEventListener("mousemove", handleMouseMove);
-    return () => canvas.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+    const getRadius = (d: GraphNode) => d.type === 'company' ? 22 : 16;
 
-  if (!graph) {
-    return (
-      <div className="graph-canvas-container">
-        {loading ? (
-          <div className="loading-overlay">
-            <div className="spinner" style={{ width: 32, height: 32, borderWidth: 3 }} />
-            <div className="loading-text">Building entity graph...</div>
+    nodeSel.append('circle')
+      .attr('r', d => getRadius(d) + 4)
+      .attr('fill', d => getNodeStroke(d))
+      .attr('opacity', 0.08);
+
+    nodeSel.append('circle')
+      .attr('r', getRadius)
+      .attr('fill', getNodeColor)
+      .attr('stroke', getNodeStroke)
+      .attr('stroke-width', d => (d.is_sdn || d.is_shell_suspect) ? 2 : 1)
+      .attr('stroke-dasharray', d => d.is_shell_suspect ? '4,3' : 'none')
+      .attr('filter', d => d.is_sdn ? 'url(#node-glow)' : 'none');
+
+    // Icon inside node
+    nodeSel.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('dominant-baseline', 'central')
+      .attr('font-size', d => d.type === 'company' ? '14' : '11')
+      .attr('fill', d => d.is_sdn ? '#fca5a5' : '#94a3b8')
+      .text(d => d.type === 'company' ? '🏢' : '👤');
+
+    // Name label below
+    nodeSel.append('text')
+      .attr('text-anchor', 'middle')
+      .attr('y', d => getRadius(d) + 14)
+      .attr('font-size', '9')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('fill', '#64748b')
+      .text(d => (d.name || d.id).slice(0, 14));
+
+    // SDN badge
+    nodeSel.filter(d => d.is_sdn!)
+      .append('text')
+      .attr('text-anchor', 'middle')
+      .attr('y', d => -(getRadius(d) + 8))
+      .attr('font-size', '8')
+      .attr('font-family', 'JetBrains Mono, monospace')
+      .attr('fill', '#f04438')
+      .text('⚠ SDN');
+
+    // ── TICK ──
+    simulation.on('tick', () => {
+      linkSel
+        .attr('x1', (d: any) => (d.source as GraphNode).x ?? 0)
+        .attr('y1', (d: any) => (d.source as GraphNode).y ?? 0)
+        .attr('x2', (d: any) => (d.target as GraphNode).x ?? 0)
+        .attr('y2', (d: any) => (d.target as GraphNode).y ?? 0);
+
+      linkLabelSel
+        .attr('x', (d: any) => (((d.source as GraphNode).x ?? 0) + ((d.target as GraphNode).x ?? 0)) / 2)
+        .attr('y', (d: any) => (((d.source as GraphNode).y ?? 0) + ((d.target as GraphNode).y ?? 0)) / 2 - 5);
+
+      nodeSel.attr('transform', d => `translate(${d.x ?? 0},${d.y ?? 0})`);
+    });
+
+    // Run some ticks before showing to avoid initial explosion
+    simulation.tick(20);
+
+    return () => { simulation.stop(); };
+  }, [graphData]);
+
+  const hasNodes = graphData?.nodes?.length > 0;
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%', overflow: 'hidden' }}>
+      <div className="panel-header">
+        <Share2 size={12} style={{ color: 'var(--gold)' }} />
+        ENTITY RELATIONSHIP GRAPH
+        {hasNodes && (
+          <span style={{ marginLeft: 8, fontFamily: 'JetBrains Mono, monospace', fontSize: 9, color: 'var(--text-muted)' }}>
+            {graphData.nodes.length} NODES · {graphData.links?.length ?? 0} EDGES
+          </span>
+        )}
+        {hasNodes && graphData.nodes.some((n: any) => n.is_sdn) && (
+          <span className="badge badge-red" style={{ marginLeft: 'auto', fontSize: 9 }}>⚠ SDN HIT</span>
+        )}
+        {hasNodes && graphData.nodes.some((n: any) => n.is_shell_suspect) && (
+          <span className="badge badge-orange" style={{ marginLeft: 'auto', fontSize: 9 }}>SHELL DETECTED</span>
+        )}
+      </div>
+
+      <div ref={containerRef} style={{ flex: 1, position: 'relative', overflow: 'hidden', background: 'radial-gradient(ellipse at 50% 50%, #0d1829 0%, var(--bg-base) 80%)' }}>
+        {!hasNodes && (
+          <div style={{
+            position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center', gap: 12, color: 'var(--text-muted)',
+          }}>
+            <Share2 size={32} style={{ opacity: 0.15 }} />
+            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10 }}>SELECT AN ALERT TO VIEW ENTITY GRAPH</span>
           </div>
-        ) : (
-          <div className="graph-placeholder">
-            <div className="graph-placeholder-icon" style={{ fontSize: 12, letterSpacing: 2, fontWeight: 600 }}>GRAPH</div>
-            <div className="graph-placeholder-text">
-              Select an alert and click Generate Investigation
+        )}
+        <svg ref={svgRef} style={{ width: '100%', height: '100%', display: 'block' }} />
+
+        {/* Tooltip */}
+        {tooltip && (
+          <div style={{
+            position: 'absolute',
+            left: tooltip.x, top: tooltip.y,
+            background: 'var(--bg-panel)',
+            border: '1px solid var(--border-bright)',
+            borderRadius: 6,
+            padding: '8px 12px',
+            pointerEvents: 'none',
+            zIndex: 100,
+            minWidth: 160,
+          }}>
+            <div style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: 10, color: 'var(--gold)', marginBottom: 4, fontWeight: 700 }}>
+              {tooltip.node.id}
+            </div>
+            <div style={{ fontSize: 10, color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              <div>Name: {tooltip.node.name}</div>
+              <div>Type: {tooltip.node.type}</div>
+              <div>Risk: {tooltip.node.risk_weight! > 0 ? <span style={{ color: 'var(--orange)' }}>HIGH</span> : <span style={{ color: 'var(--green)' }}>LOW</span>}</div>
+              {tooltip.node.is_sdn && <div style={{ color: 'var(--red)', fontWeight: 700 }}>⚠ OFAC SDN LIST</div>}
+              {tooltip.node.is_shell_suspect && <div style={{ color: 'var(--orange)' }}>⚠ SHELL SUSPECT</div>}
             </div>
           </div>
         )}
       </div>
-    );
-  }
-
-  return (
-    <div className="graph-canvas-container">
-      <canvas ref={canvasRef} className="graph-canvas" />
     </div>
   );
 }

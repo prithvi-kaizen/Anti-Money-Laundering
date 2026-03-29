@@ -1,22 +1,27 @@
-"""
-Sentinel AML — SAR Router
-"""
-
 from fastapi import APIRouter, HTTPException
-from services.rag_pipeline import generate_sar
-from services.data_ingestion import get_alert_by_id
+from fastapi.responses import StreamingResponse
+from services.data_ingestion import DataIngestion
+from services.ai_investigator import AIInvestigator
+from services.sar_generator import SARGenerator
+from services.entity_extraction import GraphBuilder
 
-router = APIRouter(prefix="/alerts", tags=["sar"])
+router = APIRouter(prefix="/alerts/{alert_id}", tags=["sar"])
+db = DataIngestion()
+ai = AIInvestigator()
+sar_gen = SARGenerator()
+gb = GraphBuilder()
 
-
-@router.post("/{alert_id}/sar")
-def generate_sar_report(alert_id: str):
-    """Generate a Suspicious Activity Report for an alert."""
-    alert = get_alert_by_id(alert_id)
+@router.get("/investigate/stream")
+async def stream_sar(alert_id: str):
+    alert = db.get_alert(alert_id)
     if not alert:
-        raise HTTPException(status_code=404, detail=f"Alert {alert_id} not found")
-
-    sar = generate_sar(alert_id)
-    if not sar:
-        raise HTTPException(status_code=500, detail="Failed to generate SAR")
-    return sar
+        raise HTTPException(status_code=404)
+    entity = db.get_entity(alert.entity_id)
+    txs = db.get_related_transactions(alert.entity_id)
+    all_ents = db.get_all_scenario_entities(alert.entity_id)
+    graph = gb.build_from_transactions([e.model_dump() for e in all_ents], [t.model_dump() for t in txs])
+    
+    # We do a quick investigate run here to feed the generator.
+    # In a real system, you might cache the investigate result or do it async in one step.
+    inv_result = ai.investigate(alert.model_dump(), entity, txs, graph)
+    return StreamingResponse(sar_gen.generate_sar_stream(inv_result, entity, txs), media_type="text/event-stream")

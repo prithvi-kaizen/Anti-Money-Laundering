@@ -1,88 +1,74 @@
-"""
-Sentinel AML — Audit Logger
-In-memory audit trail for investigation transparency.
-"""
+from sqlalchemy import Column, Integer, String, DateTime, Float, JSON
+from datetime import datetime
+from database import Base, SessionLocal
+import hashlib
+import json
 
-import time
-import uuid
-from datetime import datetime, timezone
+class AuditEvent(Base):
+    __tablename__ = "audit_trail"
+    
+    id = Column(Integer, primary_key=True, index=True)
+    alert_id = Column(String, index=True)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    step = Column(String)           # "compliance_check" | "ai_investigation" | "sar_generation" | "guardrail_override"
+    actor = Column(String)          # "compliance_engine" | "ai_agent" | "guardrail"
+    decision = Column(String)
+    confidence = Column(Float)
+    regulatory_citations = Column(JSON)
+    duration_ms = Column(Integer)
+    input_hash = Column(String)     # SHA-256 of input for tamper detection
+    output_hash = Column(String)    # SHA-256 of output for tamper detection
 
+class AuditLogger:
+    def __init__(self):
+        # We assume standard scoped sessions for real use, but simple local usage here.
+        pass
+        
+    def get_db(self):
+        return SessionLocal()
+        
+    def _hash_data(self, data) -> str:
+        return hashlib.sha256(json.dumps(data, sort_keys=True, default=str).encode()).hexdigest()
 
-# In-memory audit store: alert_id -> list[AuditEntry]
-_audit_store: dict[str, list[dict]] = {}
-
-
-def log_action(alert_id: str, action: str, module: str,
-               input_summary: str, output_summary: str,
-               evidence_ids: list[str] = None,
-               duration_ms: int = 0) -> dict:
-    """Log an audit entry for an alert investigation."""
-    entry = {
-        "entry_id": f"AUD-{uuid.uuid4().hex[:8].upper()}",
-        "alert_id": alert_id,
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "action": action,
-        "module": module,
-        "input_summary": input_summary,
-        "output_summary": output_summary,
-        "evidence_ids": evidence_ids or [],
-        "duration_ms": duration_ms,
-    }
-
-    if alert_id not in _audit_store:
-        _audit_store[alert_id] = []
-    _audit_store[alert_id].append(entry)
-
-    return entry
-
-
-def get_audit_trail(alert_id: str) -> dict:
-    """Get complete audit trail for an alert."""
-    entries = _audit_store.get(alert_id, [])
-    total_duration = sum(e.get("duration_ms", 0) for e in entries)
-    return {
-        "alert_id": alert_id,
-        "entries": entries,
-        "total_duration_ms": total_duration,
-    }
-
-
-def clear_audit(alert_id: str):
-    """Clear audit trail for an alert (for re-investigation)."""
-    _audit_store.pop(alert_id, None)
-
-
-class AuditContext:
-    """Context manager for timing and logging audit entries."""
-
-    def __init__(self, alert_id: str, action: str, module: str, input_summary: str):
-        self.alert_id = alert_id
-        self.action = action
-        self.module = module
-        self.input_summary = input_summary
-        self.start_time = None
-        self.entry = None
-
-    def __enter__(self):
-        self.start_time = time.time()
-        return self
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        duration_ms = int((time.time() - self.start_time) * 1000)
-        output = f"Error: {exc_val}" if exc_type else "Completed successfully"
-        self.entry = log_action(
-            self.alert_id, self.action, self.module,
-            self.input_summary, output,
-            duration_ms=duration_ms,
-        )
-        return False
-
-    def set_output(self, output_summary: str, evidence_ids: list[str] = None):
-        """Set the output summary before exiting context."""
-        duration_ms = int((time.time() - self.start_time) * 1000)
-        self.entry = log_action(
-            self.alert_id, self.action, self.module,
-            self.input_summary, output_summary,
-            evidence_ids=evidence_ids,
-            duration_ms=duration_ms,
-        )
+    def log_event(self, alert_id: str, step: str, actor: str, decision: str, 
+                  confidence: float, citations: list, duration_ms: int, 
+                  input_data: dict, output_data: dict):
+        db = self.get_db()
+        try:
+            event = AuditEvent(
+                alert_id=alert_id,
+                step=step,
+                actor=actor,
+                decision=decision,
+                confidence=confidence,
+                regulatory_citations=citations,
+                duration_ms=duration_ms,
+                input_hash=self._hash_data(input_data),
+                output_hash=self._hash_data(output_data)
+            )
+            db.add(event)
+            db.commit()
+            db.refresh(event)
+            return event
+        finally:
+            db.close()
+    
+    def get_audit_trail(self, alert_id: str):
+        db = self.get_db()
+        try:
+            events = db.query(AuditEvent).filter(AuditEvent.alert_id == alert_id).order_by(AuditEvent.timestamp.asc()).all()
+            # Convert to dict for easy json serialization
+            return [{
+                "id": e.id,
+                "timestamp": e.timestamp.isoformat(),
+                "step": e.step,
+                "actor": e.actor,
+                "decision": e.decision,
+                "confidence": e.confidence,
+                "regulatory_citations": e.regulatory_citations,
+                "duration_ms": e.duration_ms,
+                "input_hash": e.input_hash,
+                "output_hash": e.output_hash
+            } for e in events]
+        finally:
+            db.close()

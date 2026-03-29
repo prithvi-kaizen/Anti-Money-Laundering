@@ -1,0 +1,386 @@
+{
+  "entities": [
+    {
+      "id": "e_001",
+      "name": "Ahmad Khalil",
+      "type": "person",
+      "jurisdiction": "US",
+      "risk_score": 0.4
+    },
+    {
+      "id": "e_002",
+      "name": "Khalil Trading LLC",
+      "type": "company",
+      "jurisdiction": "US",
+      "risk_score": 0.5
+    },
+    {
+      "id": "e_003",
+      "name": "Nexus Capital Ltd",
+      "type": "company",
+      "jurisdiction": "KY",
+      "risk_score": 0.9,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_004",
+      "name": "Correspondent Bank Iran",
+      "type": "company",
+      "jurisdiction": "IR",
+      "risk_score": 1.0
+    },
+    {
+      "id": "e_005",
+      "name": "UAE Shell Provider",
+      "type": "company",
+      "jurisdiction": "AE",
+      "risk_score": 0.8
+    },
+    {
+      "id": "e_006",
+      "name": "Singapore Fintech",
+      "type": "company",
+      "jurisdiction": "SG",
+      "risk_score": 0.5
+    },
+    {
+      "id": "e_007",
+      "name": "US Bank Account",
+      "type": "company",
+      "jurisdiction": "US",
+      "risk_score": 0.2
+    },
+    {
+      "id": "e_008",
+      "name": "Sunrise Properties GmbH",
+      "type": "company",
+      "jurisdiction": "DE",
+      "risk_score": 0.6
+    },
+    {
+      "id": "e_009",
+      "name": "Intermediary LLC 1",
+      "type": "company",
+      "jurisdiction": "CY",
+      "risk_score": 0.8,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_010",
+      "name": "Intermediary LLC 2",
+      "type": "company",
+      "jurisdiction": "CH",
+      "risk_score": 0.7,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_011",
+      "name": "Intermediary LLC 3",
+      "type": "company",
+      "jurisdiction": "MT",
+      "risk_score": 0.8,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_012",
+      "name": "Intermediary LLC 4",
+      "type": "company",
+      "jurisdiction": "LI",
+      "risk_score": 0.9,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_013",
+      "name": "Alpha Holdings",
+      "type": "company",
+      "jurisdiction": "US",
+      "risk_score": 0.7,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_014",
+      "name": "Beta Ventures",
+      "type": "company",
+      "jurisdiction": "US",
+      "risk_score": 0.7,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_015",
+      "name": "Gamma Associates",
+      "type": "company",
+      "jurisdiction": "US",
+      "risk_score": 0.7,
+      "is_shell_suspect": true
+    },
+    {
+      "id": "e_016",
+      "name": "Meridian Trade Co",
+      "type": "company",
+      "jurisdiction": "GB",
+      "risk_score": 0.5
+    },
+    {
+      "id": "e_017",
+      "name": "Supplier A",
+      "type": "company",
+      "jurisdiction": "CN",
+      "risk_score": 0.6
+    },
+    {
+      "id": "e_018",
+      "name": "Manufacturer B",
+      "type": "company",
+      "jurisdiction": "RU",
+      "risk_score": 0.9
+    },
+    {
+      "id": "e_019",
+      "name": "Sanctioned Entity XYZ",
+      "type": "company",
+      "jurisdiction": "RU",
+      "risk_score": 1.0,
+      "attributes": {
+        "is_sdn": true
+      }
+    }
+  ],
+  "transactions": [
+    {
+      "id": "t_A_0",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9200,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-12T15:19:27.379230"
+    },
+    {
+      "id": "t_A_1",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9450,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-14T15:19:27.379230"
+    },
+    {
+      "id": "t_A_2",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9100,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-16T15:19:27.379230"
+    },
+    {
+      "id": "t_A_3",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9800,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-18T15:19:27.379230"
+    },
+    {
+      "id": "t_A_4",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9350,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-20T15:19:27.379230"
+    },
+    {
+      "id": "t_A_5",
+      "source_id": "e_001",
+      "target_id": "e_002",
+      "amount": 9600,
+      "currency": "USD",
+      "type": "cash",
+      "date": "2026-03-22T15:19:27.379230"
+    },
+    {
+      "id": "t_B_0",
+      "source_id": "e_003",
+      "target_id": "e_004",
+      "amount": 2300000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-18T15:19:27.379230"
+    },
+    {
+      "id": "t_B_1",
+      "source_id": "e_004",
+      "target_id": "e_005",
+      "amount": 2300000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-19T15:19:27.379230"
+    },
+    {
+      "id": "t_B_2",
+      "source_id": "e_005",
+      "target_id": "e_006",
+      "amount": 2300000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-20T15:19:27.379230"
+    },
+    {
+      "id": "t_B_3",
+      "source_id": "e_006",
+      "target_id": "e_007",
+      "amount": 2300000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-21T15:19:27.379230"
+    },
+    {
+      "id": "t_C_0",
+      "source_id": "e_008",
+      "target_id": "e_009",
+      "amount": 800000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-21T15:19:27.379230"
+    },
+    {
+      "id": "t_C_1",
+      "source_id": "e_009",
+      "target_id": "e_010",
+      "amount": 800000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-22T03:19:27.379230"
+    },
+    {
+      "id": "t_C_2",
+      "source_id": "e_010",
+      "target_id": "e_011",
+      "amount": 800000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-22T15:19:27.379230"
+    },
+    {
+      "id": "t_C_3",
+      "source_id": "e_011",
+      "target_id": "e_012",
+      "amount": 800000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-23T03:19:27.379230"
+    },
+    {
+      "id": "t_C_4",
+      "source_id": "e_012",
+      "target_id": "e_008",
+      "amount": 800000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-23T15:19:27.379230"
+    },
+    {
+      "id": "t_D_0",
+      "source_id": "e_013",
+      "target_id": "e_014",
+      "amount": 150000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-19T15:19:27.379230"
+    },
+    {
+      "id": "t_D_1",
+      "source_id": "e_014",
+      "target_id": "e_015",
+      "amount": 150000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-20T15:19:27.379230"
+    },
+    {
+      "id": "t_D_2",
+      "source_id": "e_015",
+      "target_id": "e_013",
+      "amount": 150000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-21T15:19:27.379230"
+    },
+    {
+      "id": "t_E_0",
+      "source_id": "e_016",
+      "target_id": "e_017",
+      "amount": 1100000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-21T15:19:27.379230"
+    },
+    {
+      "id": "t_E_1",
+      "source_id": "e_017",
+      "target_id": "e_018",
+      "amount": 1100000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-22T15:19:27.379230"
+    },
+    {
+      "id": "t_E_2",
+      "source_id": "e_018",
+      "target_id": "e_019",
+      "amount": 1100000.0,
+      "currency": "USD",
+      "type": "wire",
+      "date": "2026-03-23T15:19:27.379230"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alert_001",
+      "entity_id": "e_001",
+      "rule_triggered": "STRUCTURING",
+      "severity": "CRITICAL",
+      "timestamp": "2026-03-24T15:19:27.379230",
+      "status": "OPEN",
+      "title": "Structuring Detection"
+    },
+    {
+      "id": "alert_002",
+      "entity_id": "e_003",
+      "rule_triggered": "HIGH_RISK_JURISDICTION",
+      "severity": "CRITICAL",
+      "timestamp": "2026-03-24T15:19:27.379230",
+      "status": "OPEN",
+      "title": "Jurisdiction Layering"
+    },
+    {
+      "id": "alert_003",
+      "entity_id": "e_008",
+      "rule_triggered": "ROUND_TRIP",
+      "severity": "HIGH",
+      "timestamp": "2026-03-24T15:19:27.379230",
+      "status": "OPEN",
+      "title": "Round-Trip Integration"
+    },
+    {
+      "id": "alert_004",
+      "entity_id": "e_013",
+      "rule_triggered": "SHELL_COMPANY",
+      "severity": "HIGH",
+      "timestamp": "2026-03-24T15:19:27.379230",
+      "status": "OPEN",
+      "title": "Shell Company Network"
+    },
+    {
+      "id": "alert_005",
+      "entity_id": "e_016",
+      "rule_triggered": "SANCTIONS_PROXIMITY",
+      "severity": "CRITICAL",
+      "timestamp": "2026-03-24T15:19:27.379230",
+      "status": "OPEN",
+      "title": "Sanctions Proximity (2-hop)"
+    }
+  ]
+}
