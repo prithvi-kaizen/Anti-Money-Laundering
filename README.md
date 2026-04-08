@@ -4,7 +4,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fprithvi-kaizen%2FAnti-Money-Laundering)
 
-## 📋 Hackathon Submission Requirements
+##  Hackathon Submission Requirements
 
 This repository contains all required assets for Problem Statement 5:
 - **✔️ Source Code & Setup Instructions**: Full Next.js / FastAPI codebase included below.
@@ -14,23 +14,23 @@ This repository contains all required assets for Problem Statement 5:
 
 ---
 
-## 🚀 The Problem & Solution
+##  The Problem & Solution
 **The Problem**: Manual AML investigation takes 4+ hours per alert, costs $25,000–$50,000 per analyst per year, and has a 38% false positive rate that creates severe investigator fatigue.
 
 **The Solution**: Sentinel combines rule-based compliance guardrails (FATF, FinCEN, OFAC) with Groq-powered AI reasoning (Llama 3.3) to investigate alerts in under 15 minutes with auditable, regulation-cited decisions.
 
-## 🧠 Key Innovation: The Guardrail Layer
+##  Key Innovation: The Guardrail Layer
 Unlike pure generative AI systems, Sentinel enforces hard regulatory boundaries that act as an interception middleware. 
 If the AI assesses an alert as low-risk but the compliance engine detects FATF jurisdiction exposure, the system overrides the AI and mandates escalation. Every decision is logged and persisted via a tamper-evident SHA-256 audit trail architecture.
 
-## 🛠️ Tech Stack
+##  Tech Stack
 - **Frontend**: Next.js 14, Tailwind CSS, D3.js (Force-directed entity graphs).
 - **Backend / Agent**: FastAPI, SQLite, NetworkX, Groq SDK (`llama-3.3-70b-versatile`).
 - **Data**: Synthetic financial crime dataset designed to test OFAC and FATF constraints.
 
 ---
 
-## 💻 Local Setup Instructions
+##  Local Setup Instructions
 
 ### 1. Backend (FastAPI Core)
 ```bash
